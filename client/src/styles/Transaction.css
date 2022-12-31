@@ -1,0 +1,47 @@
+.transaction{
+    display: flex;
+    flex-direction: row;
+    height: 20px;
+    cursor: pointer;
+    background-color: rgb(243, 243, 243);
+    padding: 10px;
+    color:black;
+    font-weight: bold;
+    border-right: 5px solid #2ecc71;
+    border-bottom: 1px solid #b7b7b7;
+  }
+  
+  .transaction.neg{
+    border-right: 5px solid #c0392b;
+  }
+  
+  .amount{
+    flex-grow: 2;
+    text-align: right;
+  }
+  .delete{
+    cursor: pointer;
+    transform: scaleX(0);
+    background-color: #e74c3c;
+    border: 0;
+    height: auto;
+    color: #fff;
+    font-size: 0.7rem;
+    padding: 0;
+    transition: all 0.2s ease-out;
+  }
+  
+  .transaction:hover .delete{
+    /* animation: appear 0.5s ease;
+    animation-fill-mode:forwards; */
+    transform: scaleX(1);
+    margin-left: 10px;
+    padding-left: 6px;
+    padding-right: 6px; 
+  }
+  
+  .title{
+    white-space: nowrap; 
+  }
+  
+  

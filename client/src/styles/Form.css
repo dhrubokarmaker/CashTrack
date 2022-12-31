@@ -1,0 +1,49 @@
+form{
+    margin-top: 5px;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  input{
+    height: 30px;
+    width: 100%;
+    padding: 0;
+    text-indent: 10px;
+    border-style: solid;
+    border-width: 1px;
+    border-color:  #bcbaba;
+    margin-bottom: 5px;
+    display: inline-block;
+  }
+  
+  
+
+  .add{
+    margin-top: 5px;
+    border: 0;
+    cursor: pointer;
+    height: 35px;
+    width: 100%;
+    background-color: rgb(243, 243, 243);
+    transition: background-color 0.3s ease;
+  }
+
+  select{
+    background: url(data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA0Ljk1IDEwIj48ZGVmcz48c3R5bGU+LmNscy0xe2ZpbGw6I2ZmZjt9LmNscy0ye2ZpbGw6IzQ0NDt9PC9zdHlsZT48L2RlZnM+PHRpdGxlPmFycm93czwvdGl0bGU+PHJlY3QgY2xhc3M9ImNscy0xIiB3aWR0aD0iNC45NSIgaGVpZ2h0PSIxMCIvPjxwb2x5Z29uIGNsYXNzPSJjbHMtMiIgcG9pbnRzPSIxLjQxIDQuNjcgMi40OCAzLjE4IDMuNTQgNC42NyAxLjQxIDQuNjciLz48cG9seWdvbiBjbGFzcz0iY2xzLTIiIHBvaW50cz0iMy41NCA1LjMzIDIuNDggNi44MiAxLjQxIDUuMzMgMy41NCA1LjMzIi8+PC9zdmc+) no-repeat 95% 50%;
+    text-indent: 10px;
+    width: 120px;
+    font-weight: 500;
+    height: 30px;
+    border-style: solid;
+    border-width: 1px;
+    border-radius: 0px;
+    border-color:  #bcbaba;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin-bottom: 5px;
+  }
+
+  .add:hover:not([disabled]){
+    background-color: rgb(225, 221, 221);;
+  }

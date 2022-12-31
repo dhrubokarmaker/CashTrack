@@ -1,0 +1,15 @@
+.inc-exp-container{
+    display: flex;
+    justify-content: space-between;
+    background-color: rgb(243, 243, 243);
+    margin: 12px 0;
+    padding: 12px;
+  }
+  
+  .inc-exp-container > div{
+   width: 50%;
+   text-align: center;
+  }
+  .inc-exp-container > div:first-of-type {
+    border-right: 1px solid #bcbaba;
+  }
