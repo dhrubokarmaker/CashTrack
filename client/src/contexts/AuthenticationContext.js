@@ -8,7 +8,7 @@ export function useAuth(){
 
 export function AuthenticationProvider({children}) {
     const [currentUser,setCurrentUser] = useState("")
-    const [authStatus,setAuthStatus] = useState(false)
+    const [authStatus,setAuthStatus] = useState(true)
     const value = 
     {
         currentUser,

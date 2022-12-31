@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import '../styles/Form.css'
 import {useTransaction,useUpdateTransaction} from '../contexts/TransactionContext'
+import axios from 'axios';
 
 export const Form = () => {
     const [description,setDescription] = useState("");
@@ -8,12 +9,10 @@ export const Form = () => {
     const [amount,setAmount] = useState("");
     const [type,setType] = useState("expense");
     const {transactions,setTransaction} = useTransaction();
-    const onSubmit = (e) => {
+    const onSubmit = async (e) => {
         e.preventDefault();
-        const newTransaction = {
-        id: transactions.length+2, text: description, amount: amount, type: type === "income" ,category: category
-        }
-        setTransaction(transactions => [newTransaction,...transactions])
+        const newTransaction = await axios.post("/api/v1/transactions/",{description: description,category:category,amount:amount,type:(type === "income")})
+        setTransaction([newTransaction.data.data,...transactions])
         setDescription("")
         setAmount("")
     }

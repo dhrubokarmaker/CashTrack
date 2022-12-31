@@ -21,7 +21,6 @@ exports.getTransaction = async (req,res,next) => {
 
 exports.addTransaction = async (req,res,next) => {
     try{
-        console.log(req.body)
         const {description,category,amount,type} = req.body;
         const transaction = await Transactions.create(req.body)
         res.status(201).json({
@@ -62,7 +61,21 @@ exports.deleteTransaction = async (req,res,next) => {
         })
     }
     catch(err){
-        console.log(err)
+        return res.status(500).json({
+            success:false,
+            error: 'Server error'
+        })
+    }
+}
+
+exports.deleteAll = async (req,res,next) => {
+    try{
+        await Transactions.deleteMany({})
+        res.status(201).json({
+            success: true,
+        })
+    }
+    catch(err){
         return res.status(500).json({
             success:false,
             error: 'Server error'
