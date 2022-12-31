@@ -1,9 +1,8 @@
 import '../styles/Transaction.css'
-import {useTransaction,useUpdateTransaction} from '../contexts/TransactionContext'
+import {useTransaction} from '../contexts/TransactionContext'
 
 export const Transaction = ({transaction}) => {
     const {transactions,setTransaction} = useTransaction();
-    // const setTransaction = useUpdateTransaction();
     const deleteEntry = (id) => {
         setTransaction(transactions.filter((t) => t.id !== id ));
     };

@@ -1,4 +1,4 @@
-import {useTransaction,useUpdateTransaction} from '../contexts/TransactionContext'
+import {useTransaction} from '../contexts/TransactionContext'
 import { Transaction } from './Transaction';
 
 export const TransactionList = () => {
