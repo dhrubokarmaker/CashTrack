@@ -30,7 +30,7 @@ client/yarn-error.log*
 
 # testing
 /coverage
-
+/config/config.env
 # production
 /build
 test.http
