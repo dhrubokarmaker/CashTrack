@@ -32,6 +32,7 @@ client/yarn-error.log*
 
 # production
 /build
+test.http
 
 # misc
 .DS_Store
