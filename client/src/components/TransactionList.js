@@ -10,8 +10,14 @@ export const TransactionList = () => {
     setTransaction(res.data.data)
   }
   const clearAll = async () => {
-    await axios.delete("/api/v1/transactions/")
-    setTransaction([])
+    try{
+      await axios.delete("/api/v1/transactions/")
+      setTransaction([])
+    }
+    catch(e){
+      console.log(e)
+    }
+    
   }
   useEffect(() => {
     getData()

@@ -5,8 +5,16 @@ import axios from 'axios';
 export const Transaction = ({transaction}) => {
     const {transactions,setTransaction} = useTransaction();
     const deleteEntry = async (id) => {
-        await axios.delete(`/api/v1/transactions/${id}`)
-        setTransaction(transactions.filter((t) => t._id !== id ));
+        try{
+          await axios.delete(`/api/v1/transactions/${id}`)
+          setTransaction(transactions.filter((t) => t._id !== id ));
+        }
+        catch(e){
+          if(e.response.status === 404){
+            setTransaction(transactions.filter((t) => t._id !== id ));
+          }
+        }
+    
     };
   return (
     <li className= {transaction.type ? "transaction" : "transaction neg"}>

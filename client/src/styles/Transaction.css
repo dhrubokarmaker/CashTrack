@@ -37,7 +37,10 @@
     transform: scaleX(1);
     margin-left: 10px;
     padding-left: 6px;
-    padding-right: 6px; 
+    padding-right: 6px;
+    padding-bottom: 2px; 
+    padding-top: 2px; 
+    height: 100%;
   }
   
   .title{
