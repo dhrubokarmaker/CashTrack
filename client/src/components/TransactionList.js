@@ -6,16 +6,20 @@ import axios from 'axios'
 export const TransactionList = () => {
   const {transactions,setTransaction} = useTransaction();
   const getData = async () => {
-    const res = await axios.get('/api/v1/transactions/')
-    setTransaction(res.data.data)
+    try{
+      const res = await axios.get('/api/v1/transactions/')
+      setTransaction(res.data.data)
+    }
+    catch(err){
+    }
+   
   }
   const clearAll = async () => {
     try{
       await axios.delete("/api/v1/transactions/")
       setTransaction([])
     }
-    catch(e){
-      console.log(e)
+    catch(err){
     }
     
   }

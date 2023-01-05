@@ -1,10 +1,9 @@
-const e = require("express");
 const Transactions = require("../models/Transactions")
-
 
 exports.getTransaction = async (req,res) => {
     try{
-        const transactions = await Transactions.find();
+        const id = req.user._id
+        const transactions = await Transactions.find({user: id});
         res.status(200).json({
             success: true,
             count: transactions.length,
@@ -22,7 +21,7 @@ exports.getTransaction = async (req,res) => {
 exports.addTransaction = async (req,res) => {
     try{
         const {description,category,amount,type} = req.body;
-        const transaction = await Transactions.create(req.body)
+        const transaction = await Transactions.create({description,category,amount,type,user:req.user._id})
         res.status(201).json({
             success: true,
             data: transaction
@@ -54,6 +53,19 @@ exports.deleteTransaction = async (req,res) => {
                 error: 'No such transaction found'
             })
         }
+        if (!req.user) {
+            return res.status(401).json({
+                success:false,
+                error: 'Not authorized'
+            })
+        }
+        if (transaction.user.toString() !== req.user._id.toString()) {
+            console.log(transaction.user.toString())
+            return res.status(401).json({
+                success:false,
+                error: 'Not authorized'
+            })
+        }
         await Transactions.deleteOne(transaction)
         res.status(201).json({
             success: true,
@@ -70,8 +82,8 @@ exports.deleteTransaction = async (req,res) => {
 
 exports.deleteAll = async (req,res) => {
     try{
-        await Transactions.deleteMany({})
-        res.status(201).json({
+        await Transactions.deleteMany({user: req.user._id})
+        return res.status(201).json({
             success: true,
         })
     }

@@ -15,7 +15,7 @@ const authorize = async (req,res,next) => {
         }
     }
     if(!token){
-        return res.status(500).json({message: 'No token'})
+        return res.status(401).json({message: 'No token'})
     }
 }
 
