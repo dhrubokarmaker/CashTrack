@@ -19,5 +19,7 @@ npm run dev
 ```
 
 Here are some screenshots:  
-![alt text](https://imgur.com/a/mOw60d4)  
-![alt text](https://imgur.com/a/hgizBFB)
+<img width="400" height="640" alt="Screen Shot 2023-01-04 at 6 44 46 PM" src="https://user-images.githubusercontent.com/63821860/210690910-f4349747-d8a3-40e4-ad22-81929124914a.png">
+<img width="400" height="640" alt="Screen Shot 2023-01-04 at 7 01 02 PM" src="https://user-images.githubusercontent.com/63821860/210691708-1a9c1a53-baf9-40b4-95be-60be0f845360.png">
+
+
