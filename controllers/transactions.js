@@ -2,7 +2,7 @@ const e = require("express");
 const Transactions = require("../models/Transactions")
 
 
-exports.getTransaction = async (req,res,next) => {
+exports.getTransaction = async (req,res) => {
     try{
         const transactions = await Transactions.find();
         res.status(200).json({
@@ -19,7 +19,7 @@ exports.getTransaction = async (req,res,next) => {
     }  
 }
 
-exports.addTransaction = async (req,res,next) => {
+exports.addTransaction = async (req,res) => {
     try{
         const {description,category,amount,type} = req.body;
         const transaction = await Transactions.create(req.body)
@@ -45,7 +45,7 @@ exports.addTransaction = async (req,res,next) => {
     }
 }
 
-exports.deleteTransaction = async (req,res,next) => {
+exports.deleteTransaction = async (req,res) => {
     try{
         const transaction = await Transactions.findById(req.params.id)
         if(!transaction){
@@ -68,7 +68,7 @@ exports.deleteTransaction = async (req,res,next) => {
     }
 }
 
-exports.deleteAll = async (req,res,next) => {
+exports.deleteAll = async (req,res) => {
     try{
         await Transactions.deleteMany({})
         res.status(201).json({
