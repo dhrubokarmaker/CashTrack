@@ -28,8 +28,24 @@ const registerUser = async (req,res) => {
 }
 
 const authenticateUser = async (req,res) => {
-    const {username, password} = req.body
-    const user = User.findOne({username})
+    try{
+        const {username, password} = req.body
+        const user = await User.findOne({username})
+        if(user){
+            if(password && await bcrypt.compare(password,user.password)){
+                return res.status(200).json({_id: user._id, token : generateToken(user._id)})
+            }
+            else{
+                return res.status(400).json({message: 'Incorrect password'})
+            }
+        }
+        else{
+            return res.status(400).json({message: 'Cannot find user'})
+        }
+    }
+    catch(err){
+        return res.status(500).json({message: err.stack})
+    }
 }
 
 const getUser = async (req,res) => {
