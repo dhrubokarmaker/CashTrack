@@ -9,7 +9,9 @@ dotenv.config({path: "./config/config.env"})
 connectDB()
 
 const transactions = require('./routes/transactions')
+const users = require('./routes/user')
 
+app.use('/api/v1/users', users);
 app.use('/api/v1/transactions', transactions);
 
 

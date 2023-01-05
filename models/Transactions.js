@@ -1,6 +1,11 @@
 const mongoose = require('mongoose')
 
 const TransactionSchema = new mongoose.Schema({
+    user:{
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: 'User'
+    },
     description:{
         type: String,
         trim: true,
@@ -20,6 +25,9 @@ const TransactionSchema = new mongoose.Schema({
         trim: true,
         required: [true,'Please add type']
     }
+},
+{
+    timestamps: true
 })
 
 module.exports = mongoose.model('Transaction',TransactionSchema)
