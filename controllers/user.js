@@ -49,12 +49,7 @@ const authenticateUser = async (req,res) => {
 }
 
 const getUser = async (req,res) => {
-    try{
-
-    }
-    catch{
-        res.status(500).json({message: err})
-    }
+    res.status(200).json(req.user)
 }
 
 const generateToken = (id) => {
