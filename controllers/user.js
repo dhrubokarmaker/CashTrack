@@ -20,19 +20,31 @@ const registerUser = async (req,res) => {
         if(!user){
             return res.status(400).json({message: 'User couldnt be created'})
         }
-        return res.status(201).json({_id: user._id})
+        return res.status(201).json({_id: user._id, token : generateToken(user._id)})
     }
     catch(err){
-        res.status(500).json({message: err})
+        return res.status(500).json({message: err.message})
     }
 }
 
 const authenticateUser = async (req,res) => {
-    res.json({message: "Authenticated"})
+    const {username, password} = req.body
+    const user = User.findOne({username})
 }
 
 const getUser = async (req,res) => {
-    res.json({message: "User retrieved"})
+    try{
+
+    }
+    catch{
+        res.status(500).json({message: err})
+    }
+}
+
+const generateToken = (id) => {
+    return jwt.sign({id},process.env.JWT_SECRET,{
+        expiresIn: '10d'
+    })
 }
 
 module.exports = {
