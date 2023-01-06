@@ -51,6 +51,7 @@ export const Login = () => {
   }
   
     return (
+        <div className="all">
         <div className="wrapper">
         <h2>CashTrack</h2>
         {error && <label style={errorStyle}>{error}</label>}
@@ -69,6 +70,7 @@ export const Login = () => {
             
         </form>
         <Link to="/signup" style={anchorStyle}>New user? Sign up.</Link>
+        </div>
         </div>
   )
 }

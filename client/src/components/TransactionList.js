@@ -8,10 +8,11 @@ export const TransactionList = () => {
   const clearLabel = {
     alignSelf:"flex-end",
     textAlign: "right",
-    color:"red", cursor:"pointer",
+    color:"#c0392b", cursor:"pointer",
     marginBottom:0,
     marginTop:"2px",
-    width: "80px"
+    width: "80px",
+    fontWeight: "900"
   }
   const getData = async () => {
     try{

@@ -7,8 +7,7 @@ import { PrivateRoutes } from './utils/PrivateRoutes';
 
 function App() {
   return (
-   
-    <div className='all'>
+   <>
       <Router>
         <Routes>
           <Route element={<PrivateRoutes/>}>
@@ -21,7 +20,7 @@ function App() {
           </Route>
         </Routes>
       </Router>
-    </div>
+    </>
   );
 }
 

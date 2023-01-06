@@ -56,6 +56,7 @@ export const Signup = () => {
   }
   
     return (
+        <div className="all">
         <div className="wrapper">
         <h2>CashTrack</h2>
         {error && <label style={errorStyle}>{error}</label>}
@@ -76,6 +77,7 @@ export const Signup = () => {
             </button>
         </form>
         <Link  to="/login" style={anchorStyle}>Already have an account? Log in.</Link>
+        </div>
         </div>
   )
 }
