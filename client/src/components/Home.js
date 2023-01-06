@@ -5,8 +5,21 @@ import { Form } from './Form';
 import {Header} from './Header'
 import { Summary } from './Summary';
 import { TransactionList } from './TransactionList';
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom';
 
 export const Home = () => {
+  const navigate = useNavigate()
+  const logout = async () => {
+    try{
+      await axios.post('/api/v1/users/logout')
+      localStorage.clear("isLoggedIn")
+      navigate("/login")
+    }
+    catch(err){
+      console.log(err.response.data.message)
+    }
+  }
   return (
    <>
    <TransactionProvider>
@@ -16,6 +29,7 @@ export const Home = () => {
           <Summary/>
           <TransactionList/>
           <Form></Form>
+          <button onClick={logout}>Logout</button>
     </div>
     </TransactionProvider>
    </>

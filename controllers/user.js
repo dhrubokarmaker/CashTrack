@@ -51,7 +51,12 @@ const authenticateUser = async (req,res) => {
 }
 
 const getUser = async (req,res) => {
-    res.status(200).json(req.cookies)
+    res.status(200).json()
+}
+
+const logout = async (req,res) => {
+    res.clearCookie("token")
+    res.status(200).json()
 }
 
 const generateToken = (id) => {
@@ -60,6 +65,7 @@ const generateToken = (id) => {
 
 
 module.exports = {
+    logout,
     registerUser,
     authenticateUser,
     getUser
