@@ -2,9 +2,11 @@ import {useTransaction} from '../contexts/TransactionContext'
 import { Transaction } from './Transaction';
 import { useEffect } from 'react';
 import axios from 'axios'
+import { useNavigate } from 'react-router-dom';
 
 export const TransactionList = () => {
   const {transactions,setTransaction} = useTransaction();
+  const navigate = useNavigate()
   const clearLabel = {
     alignSelf:"flex-end",
     textAlign: "right",
@@ -20,7 +22,9 @@ export const TransactionList = () => {
       setTransaction(res.data.data)
     }
     catch(err){
-      console.log(err.message)
+      if(err.response.status === 401 || err.response.status === 403){
+        navigate("/login")
+      }
     }
    
   }
@@ -30,6 +34,9 @@ export const TransactionList = () => {
       setTransaction([])
     }
     catch(err){
+      if(err.response.status === 401 || err.response.status === 403){
+        navigate("/login")
+      }
     }
     
   }

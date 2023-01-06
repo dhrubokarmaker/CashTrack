@@ -34,7 +34,9 @@ export const Header = () => {
       navigate("/login")
     }
     catch(err){
-      console.log(err.response.data.message)
+      if(err.response.status === 401 || err.response.status === 403){
+        navigate("/login")
+      }
     }
   }
   return (
