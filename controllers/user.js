@@ -20,6 +20,7 @@ const registerUser = async (req,res) => {
         if(!user){
             return res.status(400).json({message: 'User couldnt be created'})
         }
+        res.cookie("token",generateToken(user._id),{httpOnly : true,signed:true})
         return res.status(201).json({_id: user._id, token : generateToken(user._id)})
     }
     catch(err){
@@ -33,6 +34,7 @@ const authenticateUser = async (req,res) => {
         const user = await User.findOne({username})
         if(user){
             if(password && await bcrypt.compare(password,user.password)){
+                res.cookie("token",generateToken(user._id),{httpOnly : true, signed:true})
                 return res.status(200).json({_id: user._id, token : generateToken(user._id)})
             }
             else{
@@ -49,14 +51,13 @@ const authenticateUser = async (req,res) => {
 }
 
 const getUser = async (req,res) => {
-    res.status(200).json(req.user)
+    res.status(200).json(req.cookies)
 }
 
 const generateToken = (id) => {
-    return jwt.sign({id},process.env.JWT_SECRET,{
-        expiresIn: '10d'
-    })
+    return jwt.sign({id},process.env.JWT_SECRET)
 }
+
 
 module.exports = {
     registerUser,

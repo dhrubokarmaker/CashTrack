@@ -1,13 +1,12 @@
 import { useState } from "react"
-import {Link} from "react-router-dom"
-import { useAuth } from "../contexts/AuthenticationContext"
-import { Navigate } from 'react-router-dom'
+import {Link, useNavigate} from "react-router-dom"
+import axios from 'axios'
 
 export const Login = () => {
   const [userName,setUserName] = useState("")
   const [password,setPassword] = useState("")
-        
-  const {authStatus, setCurrentUser, setAuthStatus} = useAuth()
+  const [error,setError] = useState()
+  const navigate = useNavigate()  
 
 
   const formStyle = {
@@ -23,20 +22,33 @@ export const Login = () => {
 
   }
 
-  const handleLogin = (e) => {
+  const errorStyle = {
+    marginLeft: "40px",
+    display: "block",
+    fontWeight: 800,
+    color: "red",
+    fontSize: "14px"
+  }
+
+  const handleLogin = async (e) => {
     e.preventDefault();
-    if(userName === "dhrubo" && password === "123"){
-        setCurrentUser("dhrubo")
-        setAuthStatus(true)
+    try{
+      await axios.post('/api/v1/users/login',{
+        username: userName, password
+      })
+      localStorage.setItem("isLoggedIn","true")
+      setError()
+      navigate("/")
     }
-    else{
-        console.log("baal falaiso")
+    catch(err){
+      setError(err.response.data.message)
     }
   }
   
     return (
         <div className="wrapper">
         <h2>CashTrack</h2>
+        {error && <label style={errorStyle}>{error}</label>}
         <form style={formStyle} onSubmit={handleLogin}>
             <label>Username</label>
             <input type="text" value={userName} onChange = {(e) => {setUserName(e.target.value)}} placeholder="Enter Username"></input>
@@ -45,7 +57,6 @@ export const Login = () => {
             <button className="add" disabled = {!userName || !password}>Log In</button>
         </form>
         <Link to="/signup" style={anchorStyle}>New user? Sign up.</Link>
-        {authStatus && <Navigate to = "/" exact></Navigate>}
         </div>
   )
 }

@@ -1,10 +1,9 @@
 import React from 'react'
 import {Outlet, Navigate} from 'react-router-dom'
-import { useAuth } from '../contexts/AuthenticationContext'
 
 export const PrivateRoutes = () => {
-    const {authStatus} = useAuth()
+    const isLoggedIn = localStorage.getItem("isLoggedIn")
     return (
-        authStatus ? <Outlet/> : <Navigate to = "/login" ></Navigate>
+        (isLoggedIn === "true") ? <Outlet/> : <Navigate to = "/login" ></Navigate>
     )
 }

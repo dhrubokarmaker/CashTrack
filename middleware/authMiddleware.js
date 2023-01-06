@@ -1,17 +1,17 @@
 const jwt = require('jsonwebtoken')
 const User = require('../models/User')
 
-const authorize = async (req,res,next) => {
+const authenticate = async (req,res,next) => {
     let token
-    if(req.headers.authorization && req.headers.authorization.startsWith('Bearer')){
+    if(req.signedCookies && req.signedCookies.token){
         try{
-            token = req.headers.authorization.split(' ')[1]
+            token = req.signedCookies.token
             const decoded = jwt.verify(token,process.env.JWT_SECRET)
             req.user = await User.findById(decoded.id).select('-password')
             next()
         }
         catch(err){
-            return res.status(401).json({message: 'Not Authorized'})
+            return res.status(403).json({message: 'Not Authorized'})
         }
     }
     if(!token){
@@ -19,4 +19,4 @@ const authorize = async (req,res,next) => {
     }
 }
 
-module.exports = {authorize}
+module.exports = {authenticate}

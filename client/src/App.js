@@ -4,13 +4,11 @@ import { Signup } from './components/Signup';
 import {BrowserRouter as Router, Routes, Route} from 'react-router-dom'
 import { Home } from './components/Home';
 import { PrivateRoutes } from './utils/PrivateRoutes';
-import {AuthenticationProvider} from './contexts/AuthenticationContext';
 
 function App() {
   return (
    
     <div className='all'>
-      <AuthenticationProvider>
       <Router>
         <Routes>
           <Route element={<PrivateRoutes/>}>
@@ -23,7 +21,6 @@ function App() {
           </Route>
         </Routes>
       </Router>
-      </AuthenticationProvider>
     </div>
   );
 }

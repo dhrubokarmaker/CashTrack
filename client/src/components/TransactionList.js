@@ -5,12 +5,21 @@ import axios from 'axios'
 
 export const TransactionList = () => {
   const {transactions,setTransaction} = useTransaction();
+  const clearLabel = {
+    alignSelf:"flex-end",
+    textAlign: "right",
+    color:"red", cursor:"pointer",
+    marginBottom:0,
+    marginTop:"2px",
+    width: "80px"
+  }
   const getData = async () => {
     try{
       const res = await axios.get('/api/v1/transactions/')
       setTransaction(res.data.data)
     }
     catch(err){
+      console.log(err.message)
     }
    
   }
@@ -37,7 +46,7 @@ export const TransactionList = () => {
             {transactions.map((transaction) =>
                 <Transaction key = {transaction._id} transaction = {transaction}></Transaction>
             )}
-            <label style={{justifyContent:"right",color:"red", cursor:"pointer",marginBottom:0,textAlign:"right",marginTop:"2px"}} onClick={clearAll}> Clear All</label>
+            <label style={clearLabel} onClick={clearAll}> Clear All</label>
             </>
             : <label>No transactions to view</label>
         }

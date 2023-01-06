@@ -3,7 +3,7 @@ const Transactions = require("../models/Transactions")
 exports.getTransaction = async (req,res) => {
     try{
         const id = req.user._id
-        const transactions = await Transactions.find({user: id});
+        const transactions = await Transactions.find({user: id}).sort( { createdAt : -1 } );
         res.status(200).json({
             success: true,
             count: transactions.length,
@@ -67,7 +67,7 @@ exports.deleteTransaction = async (req,res) => {
             })
         }
         await Transactions.deleteOne(transaction)
-        res.status(201).json({
+        res.status(200).json({
             success: true,
             data: transaction
         })
@@ -83,7 +83,7 @@ exports.deleteTransaction = async (req,res) => {
 exports.deleteAll = async (req,res) => {
     try{
         await Transactions.deleteMany({user: req.user._id})
-        return res.status(201).json({
+        return res.status(200).json({
             success: true,
         })
     }
