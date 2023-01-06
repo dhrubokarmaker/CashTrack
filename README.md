@@ -8,6 +8,8 @@ First and foremost, create a config.env file inside config folder using this tem
 NODE_ENV = development
 PORT = 4000
 MONGO_URI = <your mongodb uri>
+JWT_SECRET = <your jwt secret>
+COOKIE_PARSER = <your cookie parser secret>
 ```
 Run the following commands on project directory:  
 ```zsh
