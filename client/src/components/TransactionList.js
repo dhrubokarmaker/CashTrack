@@ -16,6 +16,7 @@ export const TransactionList = () => {
     width: "80px",
     fontWeight: "900"
   }
+ 
   const getData = async () => {
     try{
       const res = await axios.get('/api/v1/transactions/')
@@ -42,6 +43,7 @@ export const TransactionList = () => {
   }
   useEffect(() => {
     getData()
+    // eslint-disable-next-line
   },[])
   
   return (
