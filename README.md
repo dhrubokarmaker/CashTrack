@@ -1,4 +1,4 @@
-# Expense Tracker
+# CashTrack
 
 Here is a full-stack expense tracking application. I built a responsive React front-end and an optimized REST API using Express. Also, implemented and integrated a MongoDB database to model and organize user transaction logs.  
   
