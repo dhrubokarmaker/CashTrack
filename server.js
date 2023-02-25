@@ -5,15 +5,16 @@ const cookieParser = require('cookie-parser')
 var cors = require('cors');
 
 const app = express()
+app.set('trust proxy', 1)
 app.use(cors({
   origin: "*",
   credentials: true
 }));
 app.use(express.json())
-app.set('trust proxy', 1)
+
 
 dotenv.config({path: "./config/config.env"})
-app.use(cookieParser(process.env.COOKIE_PARSER))
+app.use(cookieParser(process.env.COOKIE_PARSER,{ secure: true }))
 
 connectDB()
 
