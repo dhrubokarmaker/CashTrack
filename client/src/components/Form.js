@@ -11,7 +11,7 @@ export const Form = () => {
     const {transactions,setTransaction} = useTransaction();
     const onSubmit = async (e) => {
         e.preventDefault();
-        const newTransaction = await axios.post("/api/v1/transactions/",{description: description,category:category,amount:amount,type:(type === "income")})
+        const newTransaction = await axios.post("https://cashtrack-backend.onrender.com/api/v1/transactions/",{description: description,category:category,amount:amount,type:(type === "income")})
         setTransaction([newTransaction.data.data,...transactions])
         setDescription("")
         setAmount("")

@@ -41,7 +41,7 @@ export const Signup = () => {
     }
     try{
       setLoading(true)
-      await axios.post('/api/v1/users/',{
+      await axios.post('https://cashtrack-backend.onrender.com/api/v1/users/',{
         username: userName, password
       })
       localStorage.setItem("isLoggedIn","true")
