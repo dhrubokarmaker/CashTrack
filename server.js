@@ -6,7 +6,7 @@ var cors = require('cors');
 
 const app = express()
 app.use(cors({
-  origin: 'https://cashtrack-frontend.onrender.com'
+  origin: 'https://cashtrackapp.netlify.app'
 }));
 app.use(express.json())
 app.set('trust proxy', 1)
