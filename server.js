@@ -9,7 +9,7 @@ app.set('trust proxy', 1)
 app.use(cors({
   origin: true,
   credentials: true,
-  allowedHeaders: ['Content-Type', 'Authorization']
+  allowedHeaders: ['X-Requested-With', 'X-HTTP-Method-Override', 'Content-Type', 'Accept']
 }));
 app.use(express.json())
 
