@@ -5,7 +5,7 @@ const cookieParser = require('cookie-parser')
 var cors = require('cors');
 
 const app = express()
-// app.set('trust proxy', 1)
+app.set('trust proxy', 1)
 app.use(cors({
   origin: "https://cashtrackapp.netlify.app",
   credentials: true
@@ -14,7 +14,7 @@ app.use(express.json())
 
 
 dotenv.config({path: "./config/config.env"})
-app.use(cookieParser(process.env.COOKIE_PARSER,{sameSite:'none',secure:true}))
+app.use(cookieParser(process.env.COOKIE_PARSER))
 
 connectDB()
 

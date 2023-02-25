@@ -20,7 +20,7 @@ const registerUser = async (req,res) => {
         if(!user){
             return res.status(400).json({message: 'User couldnt be created'})
         }
-        res.cookie("token",generateToken(user._id),{httpOnly : true,signed:true})
+        res.cookie("token",generateToken(user._id),{httpOnly : true,signed:true,sameSite: "none"})
         return res.status(201).json({_id: user._id, token : generateToken(user._id)})
     }
     catch(err){
@@ -34,7 +34,7 @@ const authenticateUser = async (req,res) => {
         const user = await User.findOne({username})
         if(user){
             if(password && await bcrypt.compare(password,user.password)){
-                res.cookie("token",generateToken(user._id),{httpOnly : true, signed:true})
+                res.cookie("token",generateToken(user._id),{httpOnly : true, signed:true,sameSite: "none"})
                 return res.status(200).json({_id: user._id, token : generateToken(user._id)})
             }
             else{
