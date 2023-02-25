@@ -19,7 +19,7 @@ export const TransactionList = () => {
  
   const getData = async () => {
     try{
-      const res = await axios.get('https://cashtrack-backend.onrender.com/api/v1/transactions/')
+      const res = await axios.get('https://cashtrack-backend.onrender.com/api/v1/transactions/',{withCredentials: true})
       setTransaction(res.data.data)
     }
     catch(err){
@@ -31,7 +31,7 @@ export const TransactionList = () => {
   }
   const clearAll = async () => {
     try{
-      await axios.delete("https://cashtrack-backend.onrender.com/api/v1/transactions/")
+      await axios.delete("https://cashtrack-backend.onrender.com/api/v1/transactions/",{withCredentials: true})
       setTransaction([])
     }
     catch(err){

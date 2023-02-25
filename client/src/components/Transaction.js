@@ -6,7 +6,7 @@ export const Transaction = ({transaction}) => {
     const {transactions,setTransaction} = useTransaction();
     const deleteEntry = async (id) => {
         try{
-          await axios.delete(`https://cashtrack-backend.onrender.com/api/v1/transactions/${id}`)
+          await axios.delete(`https://cashtrack-backend.onrender.com/api/v1/transactions/${id}`,{withCredentials: true})
           setTransaction(transactions.filter((t) => t._id !== id ));
         }
         catch(e){

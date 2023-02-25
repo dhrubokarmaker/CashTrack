@@ -29,7 +29,7 @@ export const Header = () => {
   const logout = async (e) => {
     e.preventDefault();
     try{
-      await axios.post('https://cashtrack-backend.onrender.com/api/v1/users/logout')
+      await axios.post('https://cashtrack-backend.onrender.com/api/v1/users/logout',{withCredentials: true})
       localStorage.clear("isLoggedIn")
       navigate("/login")
     }
