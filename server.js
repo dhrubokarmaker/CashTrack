@@ -2,9 +2,12 @@ const express = require('express')
 const dotenv = require('dotenv')
 const connectDB = require('./config/db')
 const cookieParser = require('cookie-parser')
-const path = require('path')
+var cors = require('cors');
 
 const app = express()
+app.use(cors({
+  origin: 'https://cashtrack-frontend.onrender.com/'
+}));
 app.use(express.json())
 app.set('trust proxy', 1)
 
